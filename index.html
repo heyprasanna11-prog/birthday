@@ -1,54 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Happy Birthday Madam❤️</title>
+    <title>Happy Birthday Theertha ❤️</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Cool Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(45deg, #1e1e2f, #ff4b5c);
-            color: white;
+            height: 100vh;
             overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            background: black;
         }
 
+        /* Moving space background */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, #ff003c, #000814, #000);
+            animation: moveBg 10s linear infinite;
+            z-index: -2;
+        }
+
+        @keyframes moveBg {
+            0% { transform: translate(0,0); }
+            50% { transform: translate(-25%, -25%); }
+            100% { transform: translate(0,0); }
+        }
+
+        /* Marvel-style glowing title */
         h1 {
-            margin-top: 80px;
-            font-size: 55px;
-            animation: glow 2s infinite alternate;
+            font-size: 48px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: titleEntry 2s ease-out forwards, glow 2s infinite alternate;
+            opacity: 0;
+        }
+
+        @keyframes titleEntry {
+            from { transform: scale(0.2); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         @keyframes glow {
-            from { text-shadow: 0 0 10px #fff; }
-            to { text-shadow: 0 0 25px #ffea00; }
+            from { text-shadow: 0 0 10px #ff003c; }
+            to { text-shadow: 0 0 30px #ffea00, 0 0 50px #ff003c; }
         }
 
         p {
-            font-size: 20px;
+            margin-top: 10px;
+            font-size: 18px;
+            opacity: 0.9;
         }
 
         button {
-            padding: 15px 35px;
-            font-size: 20px;
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 18px;
             border: none;
-            border-radius: 30px;
-            background: white;
-            color: #ff4b5c;
+            border-radius: 40px;
+            background: linear-gradient(45deg, #ff003c, #ffea00);
+            color: black;
             cursor: pointer;
-            margin-top: 25px;
+            font-weight: bold;
             transition: 0.3s;
         }
 
         button:hover {
             transform: scale(1.1);
-            background: #ffea00;
+            box-shadow: 0 0 20px #ff003c;
         }
 
         #msg {
             display: none;
-            margin-top: 30px;
-            font-size: 24px;
+            margin-top: 25px;
+            font-size: 20px;
             animation: fadeIn 2s forwards;
         }
 
@@ -57,39 +94,39 @@
             to {opacity: 1;}
         }
 
-        /* Floating Hearts */
-        .heart {
+        /* Floating light particles */
+        .particle {
             position: absolute;
-            bottom: -20px;
-            color: pink;
-            font-size: 20px;
-            animation: floatUp 6s linear infinite;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 6s linear infinite;
         }
 
-        @keyframes floatUp {
+        @keyframes float {
             0% {transform: translateY(0); opacity: 1;}
             100% {transform: translateY(-100vh); opacity: 0;}
         }
 
-        /* Responsive */
         @media(max-width:600px){
-            h1{font-size:38px;}
+            h1{font-size:32px;}
         }
     </style>
 </head>
 
 <body>
 
-    <h1>🎉 Happy Birthday Madam 🎉</h1>
-    <p>Tap below for a surprise 💖</p>
+    <h1>Happy Birthday Theertha ❤️</h1>
+    <p>Superhero of my life ✨ Tap below</p>
 
-    <button onclick="showMessage()">Open Your Surprise</button>
+    <button onclick="showMessage()">Reveal Surprise 💖</button>
 
     <div id="msg">
-        nalla enjoy pannu bruhh ✨<br>
-        apparo ethuvu soldrathuku illa ❤️<br>
-        May your smile never fade 😊<br>
-        Happy Birthday once again Theertha 🎂💫
+        enjoy your day superhero 🦸‍♀️❤️<br>
+        Stay amazing, stay you 💫<br>
+        once again Happy Birthday Madam🎂💖
     </div>
 
     <script>
@@ -97,21 +134,17 @@
             document.getElementById("msg").style.display = "block";
         }
 
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerHTML = "💖";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-            document.body.appendChild(heart);
-
-            setTimeout(() => { heart.remove(); }, 6000);
+        function createParticle() {
+            const p = document.createElement("div");
+            p.classList.add("particle");
+            p.style.left = Math.random() * 100 + "vw";
+            p.style.animationDuration = (Math.random() * 3 + 3) + "s";
+            document.body.appendChild(p);
+            setTimeout(() => { p.remove(); }, 6000);
         }
 
-        setInterval(createHeart, 300);
+        setInterval(createParticle, 100);
     </script>
 
 </body>
 </html>
-
