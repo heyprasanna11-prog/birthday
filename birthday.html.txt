@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #1e1e2f, #ff4b5c);
+            color: white;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin-top: 80px;
+            font-size: 55px;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff; }
+            to { text-shadow: 0 0 25px #ffea00; }
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 20px;
+            border: none;
+            border-radius: 30px;
+            background: white;
+            color: #ff4b5c;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: #ffea00;
+        }
+
+        #msg {
+            display: none;
+            margin-top: 30px;
+            font-size: 24px;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            color: pink;
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {transform: translateY(0); opacity: 1;}
+            100% {transform: translateY(-100vh); opacity: 0;}
+        }
+
+        /* Responsive */
+        @media(max-width:600px){
+            h1{font-size:38px;}
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎉 Happy Birthday My Love 🎉</h1>
+    <p>Tap below for a surprise 💖</p>
+
+    <button onclick="showMessage()">Open Your Surprise</button>
+
+    <div id="msg">
+        You make my world brighter every day ✨<br>
+        I'm lucky to have you in my life ❤️<br>
+        May your smile never fade 😊<br>
+        Happy Birthday once again 🎂💫
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById("msg").style.display = "block";
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+
+</body>
+</html>
